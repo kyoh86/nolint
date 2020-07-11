@@ -9,4 +9,8 @@ func main() {
 	fmt.Printf("%d")      // want "Printf format %d reads arg #1, but call has 0 args"
 	fmt.Printf("%d")      // nolint
 	fmt.Printf("%d", 3.6) // want "Printf format %d has arg 3.6 of wrong type float64"
+
+	// With another comments
+	fmt.Printf("%d") // nolint // foobar
+	fmt.Printf("%d") // foobar // nolint
 }

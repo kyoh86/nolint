@@ -75,13 +75,15 @@ func (n *NoLinter) regMark(r analysis.Range, category string) {
 }
 
 func (n *NoLinter) regMarks(comment *ast.CommentGroup) {
-	text := strings.TrimSpace(comment.Text())
-	if text == "nolint" {
-		n.regMark(comment, "")
-	}
-	if strings.HasPrefix(text, "nolint:") {
-		for _, category := range strings.Split(strings.TrimPrefix(text, "nolint:"), ",") {
-			n.regMark(comment, category)
+	for _, block := range strings.Split(comment.Text(), "//") {
+		block := strings.TrimSpace(block)
+		if block == "nolint" {
+			n.regMark(comment, "")
+		}
+		if strings.HasPrefix(block, "nolint:") {
+			for _, category := range strings.Split(strings.TrimPrefix(block, "nolint:"), ",") {
+				n.regMark(comment, strings.TrimSpace(category))
+			}
 		}
 	}
 }
