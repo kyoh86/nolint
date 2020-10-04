@@ -13,4 +13,36 @@ func main() {
 	// With another comments
 	fmt.Printf("%d") // nolint // foobar
 	fmt.Printf("%d") // foobar // nolint
+
+	// With nolint directive above the block.
+	//nolint
+	fmt.Printf("%d")
+
+	// This statement has
+	// a lot of comments
+	// but in the end
+	// we mark it with the directive
+	//nolint
+	fmt.Printf("%d")
+
+	// This statement has
+	// a lot of comments
+	// and in the end
+	// we MISS mark it with
+	// the directive
+	fmt.Printf("%d") // want "Printf format %d reads arg #1, but call has 0 args"
+
+	// Multiline support
+	fmt.Printf( // want "Printf format %d reads arg #1, but call has 0 args"
+		"%d",
+	)
+
+	fmt.Printf( //nolint // multiline on diagnositcs line
+		"%d",
+	)
+
+	//nolint // multiline on top line
+	fmt.Printf(
+		"%d",
+	)
 }
