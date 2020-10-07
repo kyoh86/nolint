@@ -115,7 +115,15 @@ func (n *NoLinter) regMarks(comment *ast.CommentGroup, node ast.Node) {
 		lastCommentIdx int
 		allCommentText = comment.Text()
 		commentLines   = strings.Split(allCommentText, "\n")
+		commentLineNo  = n.fset.Position(comment.End()).Line
+		nodeLineNo     = n.fset.Position(node.Pos()).Line
 	)
+
+	if commentLineNo != nodeLineNo && commentLineNo != nodeLineNo-1 {
+		// The `nolint` comment does not end on the same line or the line above
+		// the node..
+		return
+	}
 
 	switch {
 	case len(commentLines) == 1:

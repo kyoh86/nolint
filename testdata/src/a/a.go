@@ -45,4 +45,11 @@ func main() {
 	fmt.Printf(
 		"%d",
 	)
+
+	// Directive not directly next to the node is not valid
+	//nolint
+
+	fmt.Printf( // want "Printf format %d reads arg #1, but call has 0 args"
+		"%d",
+	)
 }
