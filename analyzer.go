@@ -25,6 +25,7 @@ func run(pass *analysis.Pass) (interface{}, error) {
 	}
 	for _, f := range pass.Files {
 		noLinter.file = f
+		noLinter.commentMap = nil
 		ast.Walk(noLinter, f)
 	}
 	return noLinter, nil
