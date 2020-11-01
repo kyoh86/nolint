@@ -3,8 +3,10 @@
 Nolint will make the `go/analysis` linters
 be able to ignore diagnostics with `//nolint` comment
 
+[![PkgGoDev](https://pkg.go.dev/badge/kyoh86/nolint)](https://pkg.go.dev/kyoh86/nolint)
 [![Go Report Card](https://goreportcard.com/badge/github.com/kyoh86/nolint)](https://goreportcard.com/report/github.com/kyoh86/nolint)
 [![Coverage Status](https://img.shields.io/codecov/c/github/kyoh86/nolint.svg)](https://codecov.io/gh/kyoh86/nolint)
+[![Release](https://github.com/kyoh86/nolint/workflows/Release/badge.svg)](https://github.com/kyoh86/nolint/releases)
 
 ## Install
 
